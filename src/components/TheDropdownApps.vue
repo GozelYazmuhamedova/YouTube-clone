@@ -1,6 +1,6 @@
 <template>
   <div
-    class="opacity-0 group-hover:opacity-100 absolute top-9 right-0 sm:left-0 bg-white w-60 border border-top-0"
+    class="hidden opacity-0 group-hover:opacity-100 absolute top-9 right-0 sm:left-0 bg-white w-60 border border-top-0"
   >
     <section class="py-2 border-b">
       <ul>
