@@ -3,44 +3,18 @@
     <div class="lg:w-1/4 flex">
       <div class="flex items-center  xl:w-64 xl:bg-white pl-4">
         <button class="mr-3 sm:ml-2 sm:mr-6">
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
+         <BaseIcon  name="menu" />
         </button>
         <LogoMain />
       </div>
-    </div>
+    </div>  
 
     <div
       class=" hidden p-2.5 pl-8 md:pl-12 md:px-8 lg:px-0 sm:flex items-center justify-end lg:w-1/2 flex-1 max-w-screen-md"
     >
       <TheSearch />
       <button class="ml-4">
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-          ></path>
-        </svg>
+       <BaseIcon name="microphone" class="w-5 h-5" />
       </button>
     </div>
 
@@ -48,73 +22,21 @@
       class="flex items-center justify-end lg:w-1/4 sm:space-x-4 p-2 sm:px-4"
     >
       <button class="sm:hidden p-2">
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-          ></path>
-        </svg>
+  <BaseIcon name="microphone" class="w-5 h-5" />
       </button>
       <button class="sm:hidden p-2">
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          ></path>
-        </svg>
+         <BaseIcon name="search" class="w-5 h-5" />
       </button>
 
       <!--dropdown-list-->
       <button class="relative group p-2 focus:outline-none">
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-          ></path>
-        </svg>
+       <BaseIcon name="viewGrid" class="w-5 h-5" />
        <TheDropdownApps />
       </button>
 
       <!--dropdown-list-->
       <button class="relative group p-2 focus:outline-none">
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-          ></path>
-        </svg>
+     <BaseIcon name="dotsVertical" class="w-5 h-5" />
         <TheDropdownSettings />
       </button>
      <ButtonSignIn />
@@ -125,6 +47,7 @@
 
 
 <script>
+import BaseIcon from './BaseIcon.vue'
 import LogoMain from './LogoMain.vue'
 import TheSearch from './TheSearch.vue'
 import ButtonSignIn from './ButtonSignIn.vue'
@@ -133,6 +56,7 @@ import TheDropdownSettings from './TheDropdownSettings.vue'
 
 export default {
   components: {
+    BaseIcon,
     LogoMain,
     TheSearch,
     ButtonSignIn,

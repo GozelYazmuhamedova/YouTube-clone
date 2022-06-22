@@ -12,7 +12,7 @@ import TheSearchButton from './TheSearchButton.vue'
 export default {
     components: {
         TheSearchInput,
-        TheSearchButton
+        TheSearchButton 
     }
 }
 </script>
