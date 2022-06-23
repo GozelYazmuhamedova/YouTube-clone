@@ -28,27 +28,27 @@ export default {
         {
           label: 'Home',
           icon: 'home',
-          isActive: 'true'
+          isActive: true
         },
         {
           label: 'Trending',
           icon: 'fire',
-          isActive: 'false'
+          isActive: false
         },
         {
           label: 'Subscriptions',
           icon: 'collection',
-          isActive: 'false'
-        },
+          isActive: false 
+         },
         {
           label: 'Library',
           icon: 'duplicate',
-          isActive: 'false'
+          isActive: false
         },
         {
           label: 'History',
           icon: 'clock',
-          isActive: 'false'
+          isActive: false
         }
       ]
     }
