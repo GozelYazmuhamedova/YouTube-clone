@@ -1,14 +1,15 @@
 <template>
-  <section
-    class="pt-14 md:pl-24 xl:pl-64 w-full fixed z-10 bg-white bg-opacity-95"
-  >
+  <section :class="classes">
     <div class="border-t border-b px-4 max-w-screen-2xl m-auto">
       <div
-        class=" py-3  flex space-x-3 overflow-auto text-sm whitespace-nowrap">
-      <CategoryItem  v-for="category in categories"
+        class=" py-3  flex space-x-3 overflow-auto text-sm whitespace-nowrap"
+      >
+        <CategoryItem
+          v-for="category in categories"
           :key="category"
           :category="category"
-          :is-active="category === 'All'"/>
+          :is-active="category === 'All'"
+        />
       </div>
     </div>
   </section>
@@ -18,9 +19,13 @@
 import CategoryItem from './CategoryItem.vue'
 
 export default {
-components: {
-  CategoryItem
-},
+  components: {
+    CategoryItem
+  },
+
+  props: {
+    isSidebarOpen: Boolean
+  },
 
   data () {
     return {
@@ -43,6 +48,20 @@ components: {
         'Games',
         'Shows',
         'Trends'
+      ]
+    }
+  },
+
+  computed: {
+    classes () {
+      return [
+        this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-24',
+        'pt-14',
+        'w-full',
+        'fixed',
+        'z-10',
+        'bg-white',
+        'bg-opacity-95'
       ]
     }
   }

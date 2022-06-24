@@ -2,19 +2,22 @@
   <header class="flex fixed justify-between z-30 w-full">
     <div class="lg:w-1/4 flex">
       <div class="flex items-center  xl:w-64 xl:bg-white pl-4">
-        <button class="mr-3 sm:ml-2 sm:mr-6">
-         <BaseIcon  name="menu" />
+        <button
+          @click="$emit('toggleSidebar')"
+          class="mr-3 sm:ml-2 sm:mr-4"
+        >
+          <BaseIcon name="menu" />
         </button>
         <LogoMain />
       </div>
-    </div>  
+    </div>
 
     <div
       class=" hidden p-2.5 pl-8 md:pl-12 md:px-8 lg:px-0 sm:flex items-center justify-end lg:w-1/2 flex-1 max-w-screen-md"
     >
       <TheSearch />
       <button class="ml-4">
-       <BaseIcon name="microphone" class="w-5 h-5" />
+        <BaseIcon name="microphone" class="w-5 h-5" />
       </button>
     </div>
 
@@ -22,29 +25,27 @@
       class="flex items-center justify-end lg:w-1/4 sm:space-x-4 p-2 sm:px-4"
     >
       <button class="sm:hidden p-2">
-  <BaseIcon name="microphone" class="w-5 h-5" />
+        <BaseIcon name="microphone" class="w-5 h-5" />
       </button>
       <button class="sm:hidden p-2">
-         <BaseIcon name="search" class="w-5 h-5" />
+        <BaseIcon name="search" class="w-5 h-5" />
       </button>
 
       <!--dropdown-list-->
       <button class="relative group p-2 focus:outline-none">
-       <BaseIcon name="viewGrid" class="w-5 h-5" />
-       <TheDropdownApps />
+        <BaseIcon name="viewGrid" class="w-5 h-5" />
+        <TheDropdownApps />
       </button>
 
       <!--dropdown-list-->
       <button class="relative group p-2 focus:outline-none">
-     <BaseIcon name="dotsVertical" class="w-5 h-5" />
+        <BaseIcon name="dotsVertical" class="w-5 h-5" />
         <TheDropdownSettings />
       </button>
-     <ButtonSignIn />
+      <ButtonSignIn />
     </div>
   </header>
 </template>
-
-
 
 <script>
 import BaseIcon from './BaseIcon.vue'
@@ -62,6 +63,10 @@ export default {
     ButtonSignIn,
     TheDropdownApps,
     TheDropdownSettings
+  },
+
+  emits: {
+    toggleSidebar: null
   }
 }
 </script>

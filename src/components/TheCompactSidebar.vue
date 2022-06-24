@@ -38,8 +38,8 @@ export default {
         {
           label: 'Subscriptions',
           icon: 'collection',
-          isActive: false 
-         },
+          isActive: false
+        },
         {
           label: 'Library',
           icon: 'duplicate',
