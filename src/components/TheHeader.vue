@@ -2,10 +2,7 @@
   <header class="flex fixed justify-between z-30 w-full">
     <div class="lg:w-1/4 flex">
       <div class="flex items-center  xl:w-64 xl:bg-white pl-4">
-        <button
-          @click="$emit('toggleSidebar')"
-          class="mr-3 sm:ml-2 sm:mr-4"
-        >
+        <button @click="$emit('toggleSidebar')" class="mr-3 sm:ml-2 sm:mr-4">
           <BaseIcon name="menu" />
         </button>
         <LogoMain />
@@ -32,16 +29,10 @@
       </button>
 
       <!--dropdown-list-->
-      <button class="relative group p-2 focus:outline-none">
-        <BaseIcon name="viewGrid" class="w-5 h-5" />
-        <TheDropdownApps />
-      </button>
+      <TheDropdownApps />
 
       <!--dropdown-list-->
-      <button class="relative group p-2 focus:outline-none">
-        <BaseIcon name="dotsVertical" class="w-5 h-5" />
-        <TheDropdownSettings />
-      </button>
+      <TheDropdownSettings />
       <ButtonSignIn />
     </div>
   </header>
