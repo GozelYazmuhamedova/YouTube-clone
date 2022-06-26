@@ -21,10 +21,6 @@
         <section class="py-2">
           <ul>
             <VideoItemDropdownListItem label="Add to queue" icon="menuAlt3" />
-             <VideoItemDropdownListItem label="Add to queue" icon="menuAlt3" />
-              <VideoItemDropdownListItem label="Add to queue" icon="menuAlt3" />
-               <VideoItemDropdownListItem label="Add to queue" icon="menuAlt3" />
-                <VideoItemDropdownListItem label="Add to queue" icon="menuAlt3" />
           </ul>
         </section>
       </div>
@@ -56,8 +52,8 @@ export default {
         'text-gray-500',
         'hover:text-gray-700',
         'hover:outline-none',
-         'group-hover:opacity-100',
-         this.isOpen ? 'opacity-100' : 'opacity-0'
+        'group-hover:opacity-100',
+        this.isOpen ? 'opacity-100' : 'opacity-0'
       ]
     },
 
@@ -66,7 +62,7 @@ export default {
         'z-30',
         'absolute',
         //'top-9',
-       // '-right-full',
+        // '-right-full',
         //'sm:right-0',
         'bg-white',
         'w-48',
@@ -91,6 +87,8 @@ export default {
         this.isOpen = false
       }
     })
+
+    // window.addEventListener('scroll', () => (this.isOpen = false))
   },
 
   methods: {
@@ -139,7 +137,7 @@ export default {
       }
       return 'right-0'
     },
-     getBottomClass (event) {
+    getBottomClass (event) {
       const clickCoordY = event.clientY
       const dropdownHeight = this.$refs.dropdown.offsetHeight
       if (window.innerHeight - clickCoordY < dropdownHeight) {
@@ -147,7 +145,7 @@ export default {
       }
       return 'buttom-auto'
     },
-     getLeftClass(event) {
+    getLeftClass (event) {
       const clickCoordX = event.clientX
       const clickCoordY = event.clientY
       const buttonHeight = event.currentTarget.offsetHeight

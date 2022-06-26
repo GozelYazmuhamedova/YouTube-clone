@@ -1,11 +1,13 @@
 <template>
   <div class="relative">
-    <button
-      @click="isOpen = !isOpen"
-      class="relative group p-2 focus:outline-none"
-    >
-      <BaseIcon name="dotsVertical" class="w-5 h-5" />
-    </button>
+    <BaseTooltip text="Settings">
+      <button
+        @click="isOpen = !isOpen"
+        class="relative group p-2 focus:outline-none"
+      >
+        <BaseIcon name="dotsVertical" class="w-5 h-5" />
+      </button>
+    </BaseTooltip>
     <transition
       enter-active-class="transition ease-out duration-100"
       enter-from-class="transition opacity-0 scale-95"
@@ -19,7 +21,7 @@
         ref="dropdown"
         @keydown.esc="isOpen = false"
         tabindex="-1"
-        class="absolute top-9 -right-full sm:right-0 bg-white w-72 border border-top-0 focus:outline-none"
+        :class="dropdownClasses"
       >
         <section class="py-2 border-b">
           <ul>
@@ -47,17 +49,31 @@
 
 <script>
 import BaseIcon from './BaseIcon.vue'
+import BaseTooltip from './BaseTooltip.vue'
 import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
 
 export default {
   components: {
     BaseIcon,
+    BaseTooltip,
     DropdownSettingsListItem
   },
 
   data () {
     return {
       isOpen: false,
+      dropdownClasses: [
+        'z-10',
+        'absolute',
+        'top-9',
+        '-right-full',
+        'sm:right-0',
+        'bg-white',
+        'w-72',
+        'border',
+        'border-top-0',
+        'focus:outline-none'
+      ],
       listItems: [
         {
           label: 'Appearance: Light',
