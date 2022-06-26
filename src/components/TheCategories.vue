@@ -1,6 +1,8 @@
 <template>
   <section :class="classes">
-    <div class="border-t border-b px-4 max-w-screen-2xl m-auto">
+    <div
+      class="bg-white bg-opacity-95 border-t border-b px-4 max-w-screen-2xl m-auto"
+    >
       <div
         class=" py-3  flex space-x-3 overflow-auto text-sm whitespace-nowrap"
       >
@@ -54,15 +56,7 @@ export default {
 
   computed: {
     classes () {
-      return [
-        this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-24',
-        'pt-14',
-        'w-full',
-        'fixed',
-        'z-10',
-        'bg-white',
-        'bg-opacity-95'
-      ]
+      return this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-24'
     }
   }
 }

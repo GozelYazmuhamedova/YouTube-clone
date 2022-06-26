@@ -1,7 +1,7 @@
 <template>
-  <div class="flex w-full h-full mr-2">
+  <div class="flex w-full  mr-2">
     <TheSearchInput />
-   <TheSearchButton />
+    <TheSearchButton />
   </div>
 </template>
 
@@ -10,9 +10,9 @@ import TheSearchInput from './TheSearchInput.vue'
 import TheSearchButton from './TheSearchButton.vue'
 
 export default {
-    components: {
-        TheSearchInput,
-        TheSearchButton 
-    }
+  components: {
+    TheSearchInput,
+    TheSearchButton
+  }
 }
 </script>
