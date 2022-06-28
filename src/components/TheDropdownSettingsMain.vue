@@ -17,7 +17,7 @@
         :label="listItems[8].label"
         :icon="listItems[8].icon"
         :with-sub-menu="listItems[8].withSubMenu"
-         @click.stop="selectMenu(listItems[8])"
+        @click.stop="selectMenu(listItems[8])"
       />
     </ul>
   </section>
@@ -31,26 +31,28 @@ export default {
     DropdownSettingsListItem
   },
 
-  emits: ['select-menu'],
+  props: ['selectedOptions'],
+
+  emits: ['select-menu', 'select-option'],
 
   data () {
     return {
       listItems: [
         {
           id: 'appearance',
-          label: 'Appearance: Light',
+          label: 'Appearance: ' + this.selectedOptions.theme.text,
           icon: 'sun',
           withSubMenu: 'true'
         },
         {
           id: 'language',
-          label: 'Language: English',
+          label: 'Language: '+ this.selectedOptions.language.text,
           icon: 'translate',
           withSubMenu: 'true'
         },
         {
           id: 'location',
-          label: 'Location: Ukraine',
+          label: 'Location: ' + this.selectedOptions.location.text,
           icon: 'globeAlt',
           withSubMenu: 'true'
         },
@@ -87,7 +89,7 @@ export default {
 
         {
           id: 'restricted_mode',
-          label: 'Restricted Mode: Off',
+          label: 'Restricted Mode: ' + this.selectedOptions.restrictedMode.text,
           icon: null,
           withSubMenu: 'true'
         }

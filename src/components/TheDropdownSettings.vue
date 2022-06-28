@@ -20,8 +20,12 @@
         tabindex="-1"
         :class="dropdownClasses"
       >
-       <component :is="menu" @select-menu="showSelectedMenu" />
-       
+        <component
+          :is="menu"
+          @select-menu="showSelectedMenu"
+          @select-option="selectOption"
+          :selected-options="selectedOptions"
+        />
       </div>
     </transition>
   </div>
@@ -45,12 +49,30 @@ export default {
     TheDropdownSettingsLanguage,
     TheDropdownSettingsLocation,
     TheDropdownSettingsRestrictedMode
-},
+  },
 
   data () {
     return {
       isOpen: false,
       selectedMenu: 'main',
+      selectedOptions: {
+        theme: {
+          id: 0,
+          text: 'Device theme'
+        },
+        language: {
+          id: 0,
+          text: 'English'
+        },
+        location: {
+          id: 0,
+          text: 'Ukraine'
+        },
+        restrictedMode: {
+          enabled: false,
+          text: 'Off'
+        }
+      },
       dropdownClasses: [
         'z-10',
         'absolute',
@@ -66,7 +88,7 @@ export default {
     }
   },
 
-   computed: {
+  computed: {
     menu () {
       const menuComponentNames = {
         main: 'TheDropdownSettingsMain',
@@ -98,6 +120,11 @@ export default {
       this.selectedMenu = selectedMenu
       this.$refs.dropdown.focus()
     },
+
+    selectOption (option) {
+      this.selectedOptions[option.name] = option.value
+    },
+
     toggle () {
       this.isOpen ? this.close() : this.open()
     },
