@@ -1,8 +1,5 @@
 <template>
-  <DropdownSettingsHeader
-    title="Choose your location"
-    @back="$emit('close')"
-  />
+  <DropdownSettingsHeader title="Choose your location" @back="$emit('close')" />
   <section class="px-3 py-4 space-y-4 text-black text-sm">
     <p>This helps hide potentially nature videos. No filter is 100% accurate</p>
     <p>This setting only applies to this browser</p>
@@ -14,19 +11,23 @@
         @input="selectOption"
       />
     </div>
+    <template v-if="selectedOptions.restrictedMode.enabled">
+      <p>
+        Restricted Mode lock prevents others from changing the Restricted Mode
+        settings on this browser.
+      </p>
+      <p>
+        Lock Restricted Mode on this browser
+      </p>
+    </template>
   </section>
 </template>
 
 <script>
-import DropdownSettingsHeader from './DropdownSettingsHeader.vue'
+import dropdownSubmenu from '../mixins/dropdownSubmenu'
 
 export default {
-  components: {
-    DropdownSettingsHeader
-  },
-  props: ['selectedOptions'],
-
-  emits: ['close', 'select-option'],
+  mixins: [dropdownSubmenu],
 
   methods: {
     selectOption ($event) {

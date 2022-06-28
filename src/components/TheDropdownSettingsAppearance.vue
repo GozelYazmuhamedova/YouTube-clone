@@ -17,27 +17,15 @@
 </template>
 
 <script>
-import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
-import DropdownSettingsHeader from './DropdownSettingsHeader.vue'
+import dropdownSubmenu from '../mixins/dropdownSubmenu'
 
 export default {
-  components: {
-    DropdownSettingsListItem,
-    DropdownSettingsHeader
-  },
-  props: ['selected-options'],
-
-  emits: ['close', 'select-option'],
+  mixins: [dropdownSubmenu],
 
   data () {
     return {
+      optionName: 'theme',
       themes: ['Device theme', 'Dark theme', 'Light theme']
-    }
-  },
-
-  methods: {
-    selectOption (theme) {
-      this.$emit('select-option', { name: 'theme', value: theme })
     }
   }
 }

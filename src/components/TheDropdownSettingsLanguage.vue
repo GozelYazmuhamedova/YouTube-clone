@@ -1,8 +1,5 @@
 <template>
-  <DropdownSettingsHeader
-    title="Choose your language"
-    @back="$emit('close')"
-  />
+  <DropdownSettingsHeader title="Choose your language" @back="$emit('close')" />
   <section class="py-2">
     <ul class="max-h-96 overflow-auto">
       <DropdownSettingsListItem
@@ -10,34 +7,22 @@
         :key="languageId"
         :label="languageName"
         :active="languageId === selectedOptions.language.id"
-        @click="selectOption({id: languageId, text: languageName})"
+        @click="selectOption({ id: languageId, text: languageName })"
       />
     </ul>
   </section>
 </template>
 
 <script>
-import DropdownSettingsListItem from './DropdownSettingsListItem.vue'
-import DropdownSettingsHeader from './DropdownSettingsHeader.vue'
+import dropdownSubmenu from '../mixins/dropdownSubmenu'
 
 export default {
-  components: {
-    DropdownSettingsListItem,
-    DropdownSettingsHeader
-  },
-  props: ['selectedOptions'],
-
-  emits: ['close', 'select-option'],
+  mixins: [dropdownSubmenu],
 
   data () {
     return {
+      optionName: 'language',
       languages: ['English', 'Russian']
-    }
-  },
-
-  methods: {
-    selectOption (language) {
-      this.$emit ('select-option', {name: 'language', value: language})
     }
   }
 }
