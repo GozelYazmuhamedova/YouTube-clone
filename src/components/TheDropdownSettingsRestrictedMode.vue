@@ -1,7 +1,7 @@
 <template>
   <DropdownSettingsHeader
     title="Choose your location"
-    @back="$emit('select-menu', 'main')"
+    @back="$emit('close')"
   />
   <section class="px-3 py-4 space-y-4 text-black text-sm">
     <p>This helps hide potentially nature videos. No filter is 100% accurate</p>
@@ -26,7 +26,7 @@ export default {
   },
   props: ['selectedOptions'],
 
-  emits: ['select-menu', 'select-option'],
+  emits: ['close', 'select-option'],
 
   methods: {
     selectOption ($event) {
