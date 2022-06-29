@@ -1,8 +1,12 @@
 <template>
   <div class="flex w-full  mr-2">
     <div class="relative flex w-full">
-      <TheSearchInput v-model:query="query" />
-      <TheSearchResults v-show="results.length" :results="results" />
+      <TheSearchInput
+        v-model:query="query"
+        :has-results="results.length"
+        @change-state="toggleSearchResults"
+      />
+      <TheSearchResults v-show="isSearchResultsShown" :results="results" />
     </div>
     <TheSearchButton />
   </div>
@@ -23,6 +27,7 @@ export default {
   data () {
     return {
       query: '',
+      isSearchResultsShown: false,
       keywords: [
         'new york giants',
         'new york alicia keys',
@@ -54,6 +59,12 @@ export default {
 
     trimmedQuery () {
       return this.query.replace(/\s+/g, ' ').trim()
+    }
+  },
+
+  methods: {
+    toggleSearchResults (isSearchInputActive) {
+      this.isSearchResultsShown = isSearchInputActive && this.results.length
     }
   }
 }
