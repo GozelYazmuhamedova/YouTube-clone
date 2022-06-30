@@ -5,8 +5,14 @@
         v-model:query="query"
         :has-results="results.length"
         @change-state="toggleSearchResults"
+        @keyup.up="handlePreviousSearchResult"
+        @keyup.down="handleNextSearchResult"
       />
-      <TheSearchResults v-show="isSearchResultsShown" :results="results" />
+      <TheSearchResults
+        v-show="isSearchResultsShown"
+        :results="results"
+        :active-result-id="activeSearchResultId"
+      />
     </div>
     <TheSearchButton />
   </div>
@@ -24,14 +30,15 @@ export default {
     TheSearchResults
   },
 
-    props: ['searchQuery'],
+  props: ['searchQuery'],
 
-    emits: ['update-search-query'],
+  emits: ['update-search-query'],
 
   data () {
     return {
       query: this.searchQuery,
       isSearchResultsShown: false,
+      activeSearchResultId: null,
       keywords: [
         'new york giants',
         'new york alicia keys',
@@ -72,10 +79,42 @@ export default {
     }
   },
 
-
   methods: {
     toggleSearchResults (isSearchInputActive) {
       this.isSearchResultsShown = isSearchInputActive && this.results.length
+    },
+
+    handlePreviousSearchResult () {
+      if (this.isSearchResultsShown) {
+        this.makePreviousSearchResultActive()
+      } else {
+        this.toggleSearchResults(true)
+      }
+    },
+    handleNextSearchResult () {
+      if (this.isSearchResultsShown) {
+        this.makeNextSearchResultActive()
+      } else {
+        this.toggleSearchResults(true)
+      }
+    },
+    makePreviousSearchResultActive () {
+      if (this.activeSearchResultId === null) {
+        this.activeSearchResultId = this.results.length - 1
+      } else if (this.activeSearchResultId === 0) {
+        this.activeSearchResultId = null
+      } else {
+        this.activeSearchResultId--
+      }
+    },
+    makeNextSearchResultActive () {
+      if (this.activeSearchResultId === null) {
+        this.activeSearchResultId = 0
+      } else if (this.activeSearchResultId + 1 === this.results.length) {
+        this.activeSearchResultId = null
+      } else {
+        this.activeSearchResultId++
+      }
     }
   }
 }
