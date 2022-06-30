@@ -8,8 +8,7 @@
       :value="query"
       @input="updateQuery($event.target.value)"
       @focus="setState(true)"
-      @blur="setState(false)"
-      @click="setState(true)"
+      @click.stop="setState(true)"
       @keyup.esc="handleEsc"
     />
     <button
@@ -25,7 +24,6 @@
 <script>
 import BaseIcon from './BaseIcon.vue'
 export default {
-
   components: { BaseIcon },
 
   props: ['query', 'hasResults'],
@@ -51,10 +49,10 @@ export default {
   },
   mounted () {
     if (window.innerWidth < 640) {
-       this.$refs.input.focus()
+      this.$refs.input.focus()
     }
 
-     document.addEventListener('keydown', this.onKeydown)
+    document.addEventListener('keydown', this.onKeydown)
   },
 
   beforeUnmount () {
@@ -62,7 +60,7 @@ export default {
   },
 
   methods: {
- onKeydown (event) {
+    onKeydown (event) {
       const isInputFocused = this.$refs.input === document.activeElement
       if (event.code === 'Slash' && !isInputFocused) {
         event.preventDefault()
@@ -92,7 +90,7 @@ export default {
       this.$refs.input.setSelectionRange(end, end)
     },
 
-     clear () {
+    clear () {
       this.$refs.input.focus()
       this.updateQuery('')
     }
