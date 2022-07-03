@@ -14,18 +14,11 @@
         <LogoMain />
       </div>
     </div>
-    <TheMobileSearch v-if="isMobileSearchShown" @close="closeMobileSearch">
-      <TheSearch
-        :search-query="searchQuery"
-        @update-search-query="searchQuery = $event"
-      />
-    </TheMobileSearch>
-    <TheSearchMain v-else>
-      <TheSearch
-        :search-query="searchQuery"
-        @update-search-query="searchQuery = $event"
-      />
-    </TheSearchMain>
+    <TheSearchWrapper
+      v-show="isSearchShown"
+      :is-small-screen="isSmallScreen"
+      @close="closeMobileSearch"
+    />
 
     <div
       :class="[
@@ -62,25 +55,21 @@
 <script>
 import BaseIcon from './BaseIcon.vue'
 import LogoMain from './LogoMain.vue'
-import TheSearch from './TheSearch.vue'
-import TheSearchMain from './TheSearchMain.vue'
 import BaseTooltip from './BaseTooltip.vue'
 import ButtonSignIn from './ButtonSignIn.vue'
 import TheDropdownApps from './TheDropdownApps.vue'
 import TheDropdownSettings from './TheDropdownSettings.vue'
-import TheMobileSearch from './TheMobileSearch.vue'
+import TheSearchWrapper from './TheSearchWrapper.vue'
 
 export default {
   components: {
     BaseIcon,
     LogoMain,
-    TheSearch,
-    TheSearchMain,
     BaseTooltip,
     ButtonSignIn,
     TheDropdownApps,
     TheDropdownSettings,
-    TheMobileSearch
+    TheSearchWrapper
   },
 
   emits: {
@@ -103,6 +92,10 @@ export default {
   },
 
   computed: {
+    isSearchShown () {
+      return this.isMobileSearchShown || !this.isSmallScreen
+    },
+
     isMobileSearchShown () {
       return this.isSmallScreen && this.isMobileSearchActive
     }
