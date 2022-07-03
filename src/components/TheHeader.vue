@@ -7,7 +7,7 @@
         isMobileSearchShown ? 'opacity-0' : 'opacity-100'
       ]"
     >
-      <div class="flex items-center  xl:w-64 xl:bg-white pl-4">
+      <div class="flex items-center xl:w-64 xl:bg-white pl-4">
         <button @click="$emit('toggleSidebar')" class="mr-3 sm:ml-2 sm:mr-4">
           <BaseIcon name="menu" />
         </button>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 import LogoMain from './LogoMain.vue'
 import BaseTooltip from './BaseTooltip.vue'
@@ -71,6 +72,11 @@ export default {
     TheDropdownSettings,
     TheSearchWrapper
   },
+  provide () {
+    return {
+      isMobileSearchActive: computed(() => this.isMobileSearchActive)
+    }
+  },
 
   emits: {
     toggleSidebar: null
@@ -78,7 +84,6 @@ export default {
 
   data () {
     return {
-      searchQuery: '',
       isSmallScreen: false,
       isMobileSearchActive: false,
       classes: [
