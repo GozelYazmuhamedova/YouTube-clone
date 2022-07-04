@@ -17,7 +17,7 @@
 
     <div :class="rightSideClasses">
       <BaseTooltip text="Search with your voice">
-        <button class="sm:hidden p-2"  @click="isVoiceModalOpen = true">
+        <button class="sm:hidden p-2" @click="isVoiceModalOpen = true">
           <BaseIcon name="microphone" class="w-5 h-5" />
         </button>
       </BaseTooltip>
@@ -35,7 +35,10 @@
     </div>
   </header>
   <teleport to="body">
-    <BaseModal v-if="isVoiceModalOpen" @close="isVoiceModalOpen = false" />
+    <TheModalSearchWithVoice
+      v-if="isVoiceModalOpen"
+      @close="isVoiceModalOpen = false"
+    />
   </teleport>
 </template>
 
@@ -44,22 +47,22 @@ import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 import LogoMain from './LogoMain.vue'
 import BaseTooltip from './BaseTooltip.vue'
-import BaseModal from './BaseModal.vue'
 import ButtonSignIn from './ButtonSignIn.vue'
 import TheDropdownApps from './TheDropdownApps.vue'
 import TheDropdownSettings from './TheDropdownSettings.vue'
 import TheSearchWrapper from './TheSearchWrapper.vue'
+import TheModalSearchWithVoice from './TheModalSearchWithVoice.vue'
 
 export default {
   components: {
     BaseIcon,
     LogoMain,
     BaseTooltip,
-    BaseModal,
     ButtonSignIn,
     TheDropdownApps,
     TheDropdownSettings,
-    TheSearchWrapper
+    TheSearchWrapper,
+    TheModalSearchWithVoice
   },
   provide () {
     return {
